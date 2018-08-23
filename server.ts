@@ -2,6 +2,7 @@ import * as express from 'express';
 import { join } from 'path';
 import { FetchSummoner } from './src/server/fetch-summoner';
 import { FetchMatchList } from './src/server/fetch-match-list';
+import { FetchMatch } from './src/server/fetch-match';
 
 const app = express();
 const PORT = parseInt(process.env.PORT, 10) || 3000;
@@ -18,13 +19,16 @@ app.get('/summoner/:name', (req, res) => {
 
 app.get('/matches/:accountId', (req, res) => {
   FetchMatchList(req.params.accountId, RIOTKEY)
-    .then(matches => {
-      res.send(matches);
+    .then(match_list => {
+      res.send(match_list);
     });
 });
 
 app.get('/match/:matchId', (req, res) => {
-  
+  FetchMatch(req.params.matchId, RIOTKEY)
+    .then(match => {
+      res.send(match);
+    });
 });
 
 app.get('*', (req, res) => {
