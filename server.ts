@@ -31,6 +31,10 @@ app.get('/match/:matchId', (req, res) => {
     });
 });
 
+app.get('/app.css', (req, res) => {
+  res.sendFile(join(__dirname, './src/client/app.css'));
+});
+
 app.get('*', (req, res) => {
   res.sendFile(join(__dirname, './src/client/app.html'));
 });

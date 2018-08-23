@@ -7,6 +7,7 @@ import { MainPage } from './pages/main-page/main-page';
 import { MatchesPage } from './pages/matches-page/matches-page';
 
 const Outlet = document.getElementById('outlet');
+
 const App = () => {
   return <Provider store={Store}>
     <BrowserRouter>

@@ -7,6 +7,8 @@
     "serve": "ts-node --project tsconfig.server.json server",
     "bundle": "webpack",
     "start": "npm run bundle && npm run serve",
+    "watch": "webpack --watch",
+    "dev": "npm run watch & npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Bliss",
