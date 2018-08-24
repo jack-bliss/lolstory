@@ -6,4 +6,5 @@ export const ItemDisplay = styled.span`
   margin: 5px;
   display: inline-block;
   background-color: #d8d5d0;
+  border-radius: 3px;
 `;

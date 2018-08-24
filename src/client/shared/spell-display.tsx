@@ -6,4 +6,5 @@ export const SpellDisplay = styled.span`
   margin: 5px;
   display: inline-block;
   background-color: #94c6d3;
+  border-radius: 3px;
 `;

@@ -6,4 +6,5 @@ export const RuneDisplay = styled.span`
   margin: 5px;
   display: inline-block;
   background-color: #fcf8b5;
+  border-radius: 3px;
 `;
