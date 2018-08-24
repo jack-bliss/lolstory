@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { SummonerWithMatchesWrapper } from './summoner-with-matches-wrapper';
-import { SelectedSummoner } from '../../containers/selected-summoner';
-import { LoadedMatches } from '../../containers/loaded-matches';
 import { Loading } from '../../shared/loading';
 import { SummonerDTO } from '../../../interfaces/RiotDTOs/SummonerDTO.interface';
 import { MatchDTO } from '../../../interfaces/RiotDTOs/MatchDTO.interface';
 import { ErrorPrompt } from '../../shared/error-prompt';
 import axios, { AxiosResponse } from 'axios';
 import { MatchListDTO } from '../../../interfaces/RiotDTOs/MatchListDTO.interface';
+import { SummonerDisplay } from '../summoner-display/summoner-display';
+import { MatchList } from '../match-list/match-list';
 
 export interface SummonerWithMatchesStateProps {
   name: string;
@@ -75,14 +75,14 @@ export class SummonerWithMatches extends React.Component<SummonerWithMatchesProp
           <Loading>Fetching summoner {this.props.name}...</Loading> :
           this.props.summoner === null ?
             <ErrorPrompt>Couldn't find that summoner!</ErrorPrompt> :
-            <SelectedSummoner />
+            <SummonerDisplay summoner={this.props.summoner} />
       }
       { 
         this.props.fetching_matches ? 
           <Loading>Fetching matches...</Loading> :
           this.props.matches === null ?
             <ErrorPrompt>Couldn't fetch that summoner's matches!</ErrorPrompt> :
-            <LoadedMatches />
+            <MatchList summoner={this.props.summoner} matches={this.props.matches} />
       }
     </SummonerWithMatchesWrapper>;
   }
