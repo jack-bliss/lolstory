@@ -12,5 +12,4 @@ export interface ParticipantStatsDTO {
   item4: number;
   item5: number;
   item6: number;
-  item7: number;
 }

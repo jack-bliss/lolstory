@@ -3,5 +3,8 @@ import { RuneDTO } from './RuneDTO.interface';
 export interface ParticipantDTO {
   stats: ParticipantStatsDTO;
   participantId: number;
-  runes: RuneDTO[];
+  spell1Id: number;
+  spell2Id: number;
+  championId: number;
+  runes?: RuneDTO[];
 }

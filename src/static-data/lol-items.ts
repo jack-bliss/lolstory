@@ -2,6 +2,14 @@ import { Item } from '../interfaces/item.interface';
 
 export const LolItems: Item[] = [
   {
+    'id': -1,
+    'name': 'Unknown',
+  },
+  {
+    'id': 0,
+    'name': 'None',
+  },
+  {
     'id': 1001,
     'name': 'Boots of Speed'
   },

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export const Loading = styled.div`
+export const MatchDisplayCPM = styled.div`
+  grid-area: cpm;
   text-align: center;
 `;

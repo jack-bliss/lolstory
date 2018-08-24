@@ -37,21 +37,35 @@ export class SummonerWithMatches extends React.Component<SummonerWithMatchesProp
 
   componentDidMount() {
     this.props.fetch_summoner();
+
     axios.get('/summoner/' + this.props.name)
+
       .then((response: AxiosResponse<SummonerDTO>) => {
         this.props.summoner_fetched(response.data);
         this.props.fetch_matches();
         return axios.get('/matches/' + response.data.accountId);
+      }, err => {
+        this.props.summoner_fetched(null);
+        return Promise.reject(err);
       })
+
       .then((response: AxiosResponse<MatchListDTO>) => {
-        const promisesFactoris = response.data.matches.map(match => {
+        const promisesFactoris = response.data.matches.slice(0, 5).map(match => {
           return () => axios.get('/match/' + match.gameId);
         });
         return Promise.all(promisesFactoris.map(f => f()));
+      }, err => {
+        return Promise.reject(err);
       })
+
       .then((results: (AxiosResponse<MatchDTO>)[]) => {
         this.props.matches_fetched(results.map(r => r.data));
-      });
+      }, err => {
+        this.props.matches_fetched(null);
+        return Promise.reject(err);
+      })
+      
+      .catch(console.error);
   }
 
   render() {

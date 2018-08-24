@@ -14,6 +14,9 @@ app.get('/summoner/:name', (req, res) => {
   FetchSummoner(req.params.name, RIOTKEY)
     .then(summoner => {
       res.send(summoner);
+    }, err => {
+      res.status(err.code);
+      res.send(err);
     });
 });
 
@@ -21,6 +24,9 @@ app.get('/matches/:accountId', (req, res) => {
   FetchMatchList(req.params.accountId, RIOTKEY)
     .then(match_list => {
       res.send(match_list);
+    }, err => {
+      res.status(err.code);
+      res.send(err);
     });
 });
 
@@ -28,6 +34,9 @@ app.get('/match/:matchId', (req, res) => {
   FetchMatch(req.params.matchId, RIOTKEY)
     .then(match => {
       res.send(match);
+    }, err => {
+      res.status(err.code);
+      res.send(err);
     });
 });
 
